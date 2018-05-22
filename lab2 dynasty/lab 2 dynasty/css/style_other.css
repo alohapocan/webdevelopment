@@ -1,0 +1,183 @@
+body {
+background-color: #FFCC66;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: 95% 15%;
+background-size: 200px Auto;
+font-family: Palatino,'Palatino Linotype',Georgia, sans-serif;
+}
+
+#logo {
+padding-left: 20px;
+}
+
+#sentence {
+padding-left: 100px;
+text-align: center;
+color: #990000;
+font: 25px italic small-caps;
+font-family: Palatino,'Palatino Linotype',Georgia, sans-serif;
+letter-spacing: .143em;
+}
+
+.pic {
+float: right;
+}
+
+#nav {
+width: 100%;
+text-align: center;
+font: 20px italic small-caps;
+font-family: Palatino,'Palatino Linotype',Georgia, sans-serif;
+table-layout: fixed;
+}
+
+#nav td {
+background-color: #FFAA66;
+border: 3px;
+}
+
+#nav td:hover {
+background-color: #FFAE00;
+}
+
+#nav A:link {
+text-decoration: none;
+color: black;
+}
+
+#nav A:visited {
+text-decoration: none;
+color: black;
+}
+
+#nav A:active {
+text-decoration: none;
+color: black;
+}
+
+#nav A:hover {
+text-decoration: none;
+color: #AE0101;
+}
+
+A:link {
+color: #663717;
+}
+
+A:visited {
+color: #663717;
+}
+
+A:active {
+color: #663717;
+}
+
+A:hover {
+text-decoration: none;
+color: #AE0101;
+}
+
+#list {
+list-style: inside url(marker.png);
+float: left;
+
+}
+
+#list ul li {
+list-style: inside circle;
+text-decoration: underline;
+}
+
+#list ul li:hover {
+cursor: pointer;
+text-decoration: underline;
+color: #AE0101;
+}
+     
+
+#text {
+
+padding-left: 50px;
+float: left;
+text-align: justify;
+width: 45%;
+}
+
+.elem {
+float: left;
+margin: 20px 50px;
+}
+.elem A:link {
+text-decoration: none;
+color: black;
+}
+
+.elem A:visited {
+text-decoration: none;
+color: black;
+}
+
+.elem A:active {
+text-decoration: none;
+color: black;
+}
+
+.elem A:hover {
+text-decoration: none;
+color: #AE0101;
+}
+
+#contact-form fieldset {
+width:40%;
+}
+
+#contact-form li {
+margin:10px; 
+list-style: none;
+}
+
+#contact-form input {
+margin-left: 0px; 
+text-align: left;
+}
+
+#contact-form textarea {
+margin-left:0px; 
+text-align: left;
+width: 90%;
+}
+
+#law {
+list-style: inside url(Book.png);
+float: left;
+width: 70%;
+}
+
+#special:link {
+color: #663717;
+text-decoration: underline;
+}
+
+#special:visited {
+color: #663717;
+text-decoration: underline;
+}
+
+#special:active {
+color: #663717;
+text-decoration: underline;
+}
+
+#special:hover {
+text-decoration: none;
+color: #AE0101;
+}
+
+.services {
+float: left;
+margin: 20px 50px;
+width: 70%;
+text-align: justify;
+}
+

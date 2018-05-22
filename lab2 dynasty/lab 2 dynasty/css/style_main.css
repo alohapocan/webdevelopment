@@ -1,0 +1,116 @@
+body {
+background-color: #FFCC66;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: 95% 15%;
+background-size: 200px Auto;
+font-family: Palatino,'Palatino Linotype',Georgia, sans-serif;
+}
+
+#logo {
+padding-left: 20px;
+}
+
+#sentence {
+padding-left: 100px;
+text-align: center;
+color: #990000;
+font: 25px italic small-caps;
+font-family: Palatino,'Palatino Linotype',Georgia, sans-serif;
+letter-spacing: .143em;
+}
+
+#nav {
+width: 100%;
+text-align: center;
+font: 20px italic small-caps;
+font-family: Palatino,'Palatino Linotype',Georgia, sans-serif;
+table-layout: fixed;
+}
+
+#nav td {
+background-color: #FFAA66;
+border: 3px;
+}
+
+#nav td:hover {
+background-color: #FFAE00;
+}
+
+#nav A:link {
+text-decoration: none;
+color: black;
+}
+
+#nav A:visited {
+text-decoration: none;
+color: black;
+}
+
+#nav A:active {
+text-decoration: none;
+color: black;
+}
+
+#nav A:hover {
+text-decoration: none;
+color: #AE0101;
+}
+
+A:link {
+color: #663717;
+}
+
+A:visited {
+color: #663717;
+}
+
+A:active {
+color: #663717;
+}
+
+A:hover {
+text-decoration: none;
+color: #AE0101;
+}
+
+
+#question {
+float: left;
+border: 6px inset ;
+color: #AE0101;
+border-radius: 6px;
+
+}
+
+#question A:link {
+text-decoration: none;
+color: black;
+}
+
+#question A:visited {
+text-decoration: none;
+color: black;
+}
+
+#question A:active {
+text-decoration: none;
+color: black;
+}
+
+#question A:hover {
+text-decoration: none;
+color: #AE0101;
+}
+
+.pgr {
+padding-left: 280px;
+padding-right: 30px;
+}
+
+
+
+img[border]{
+color: #FFCC66;
+}
+

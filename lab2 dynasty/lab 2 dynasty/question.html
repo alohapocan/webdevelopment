@@ -1,0 +1,126 @@
+<?php
+//Выполняем проверку нажал ли пользователь кнопку. Если не нажал нет смысла выполнять алгоритм
+//isset - проверяет входящую переменную на существование
+if (isset($_POST["sub"])){
+	//Чистим данные пришедшие от пользователя
+	//Функция trim - очищает от лишних пробелов (Аналогично СокрЛП в 1С)
+	//Функция stripslashes - удалят экранирование символов, чтобы в базу данных не попала всякая бяка
+	$name = trim(stripslashes($_POST["name"]));
+	$email = trim(stripslashes($_POST["email"]));
+	$descr = trim(stripslashes($_POST["comments"]));
+	$subscribe = isset($_POST["subscribe"]);
+	
+	//подключаем внешний файл с логикой подключения к базе
+	require_once "dbPdo.php";
+	//создаем экземпляр подключения к базе (функция описана в файле dbPdo.php)
+	$pdo = dbConnect();
+	//Устанавливаем кодировку для работы с базой. При выводе не обязательна, но желательно. Функция описана в файле dbPdo.php
+	dbSetCharset($pdo, "utf8", "utf8_general_ci");
+	//Выполняем запрос к базе данных с подготовкой параметров. Напрямую параметры передавать опасно, поэтому
+	//мы обрабатываем их в методе execute(). Функция описана в файле dbPdo.php
+	dbQuery($pdo, 'INSERT INTO `questions`(`id`,`name`,`email`,`descr`,`subscribe`) VALUES(NULL, :name, :email, :descr, :subscribe)', array(
+																																	":name" => $name,
+																																	":email" => $email,
+																																	":descr" => $descr,
+																																	":subscribe" => $subscribe
+																																	));
+
+}
+
+?>
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta name="author" content="Sovin A.">
+<meta name="keywords" content="недвижимость, жилая, коммерческая, ремонт, строительство, халява, квартира, комната, студенты, скидки, бонусы">
+<meta name="description" content="Все, что Вы хотели знать о недвижимости. Даже больше.">
+<title> Свяжитесь с косультантом </title>
+<link rel="stylesheet" type="text/css" href="css/style_other.css" />
+
+</head>
+
+<body>
+
+<div id="logo"><img src="img/logo.gif" align="left" width="100" usemap="#map" alt="АН""Династия"""></div>
+
+<p><map name="map">
+<area shape="poly"  
+coords="12,19, 15,22, 22,22, 22,22, 24,21, 25,19, 
+26,11, 27,9, 27,6, 29,6, 29,3, 28,1, 26,1, 
+25,0, 24,1, 21,3, 19,8, 15,12, 13,14" href="cats.html">
+</map>
+</p>
+
+<br>
+
+<div id="sentence">
+ Свяжитесь с косультантом 
+</div>
+
+
+<table id="nav">
+
+
+
+<tr>
+<td colspan=2><a href="residential.html"><div> Жилая недвижимость </div></a> </td>
+<td colspan=2><a href="commercial.html"><div> Коммерческая недвижмость </div></a></td> 
+<td colspan=2><a href="land.html"><div> Земельные участки </div></a></td> 
+</tr>
+
+
+
+<tr>
+<td><a href="main.html"><div> Главная </div></a></td> 
+<td colspan=2><a href="law.html"><div> Законодательство </div></a></td> 
+<td colspan=2><a href="services.html"><div> Строительство и ремонт </div></a></td> 
+<td><a href="contacts.html"><div> Контакты </div></a></td> 
+</tr>
+
+</table>
+<br>
+
+<div class="elem">
+<img src="img/consult.png" width="230" alt="Свяжитесь с косультантом" title="Свяжитесь с косультантом">
+<br>
+<br>
+&emsp;&emsp;Вопрос консультанту
+</div>
+  
+ <form id="contact-form" action="" method="post"> 
+  <fieldset>
+    <legend>Свяжитесь с нами:</legend>
+    <ul>
+      <li>
+        <label for="name">Имя:   </label>
+        <br>
+        <input type="text" name="name" id="name" value="" />
+      </li>
+      <li>
+        <label for="email">E-mail:</label>
+        <br>
+        <input type="text" name="email" id="email" value="" />
+      </li>
+      <li>
+        <label for="email">Вопрос:</label>
+        <br>
+        <textarea name="comments" id="comments" rows="10"></textarea>
+      </li>
+      <li>
+        <label for="mailing-list">Хоте ли бы Вы подписаться на нашу рассылку?</label>
+        <input type="checkbox" name="subscribe" checked="checked" id="mailing-list" value="Yes, sign me up!" />
+      </li>
+      <li>
+        <input type="submit" value="Отправить" name = "sub" />
+        <input type="reset" value="Сброс" />
+      </li>
+    </ul>
+  </fieldset>
+</form>                                    
+
+</body>
+
+</html>

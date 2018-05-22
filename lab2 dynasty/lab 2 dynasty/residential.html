@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta name="author" content="Sovin A.">
+<meta name="keywords" content="недвижимость, жилая, коммерческая, ремонт, строительство, халява, квартира, комната, студенты, скидки, бонусы">
+<meta name="description" content="Все, что Вы хотели знать о недвижимости. Даже больше.">
+<title> Жилая недвижимость </title>
+<link rel="stylesheet" type="text/css" href="css/style_other.css" />
+</head>
+
+<body>
+
+<div id="logo"><img src="img/logo.gif" align="left" width="100" usemap="#map" alt="АН""Династия"""></div>
+<p><map name="map">
+<area shape="poly"  
+coords="12,19, 15,22, 22,22, 22,22, 24,21, 25,19, 
+26,11, 27,9, 27,6, 29,6, 29,3, 28,1, 26,1, 
+25,0, 24,1, 21,3, 19,8, 15,12, 13,14" href="cats.html">
+</map>
+</p>
+<br>
+<div id="sentence">
+Жилая недвижимость
+</div>
+<table id="nav">
+
+<tr>
+<td colspan=2><a href="residential.html"><div> Жилая недвижимость </div></a> </td>
+<td colspan=2><a href="commercial.html"><div> Коммерческая недвижмость </div></a></td> 
+<td colspan=2><a href="land.html"><div> Земельные участки </div></a></td> 
+</tr>
+
+<tr>
+<td><a href="main.html"><div> Главная </div></a></td> 
+<td colspan=2><a href="law.html"><div> Законодательство </div></a></td> 
+<td colspan=2><a href="services.html"><div> Строительство и ремонт </div></a></td> 
+<td><a href="contacts.html"><div> Контакты </div></a></td> 
+</tr>
+
+</table>
+<br>
+
+<div class="pic">
+<img src="img/resid.png" border=0 align="right" alt="Жилая недвижмость" title="Жилая недвижмость" width="200">
+<br><br><br><br><br><br>
+<a href="question.html"> Связаться с консультантом</a>
+</div>                       
+
+<div>
+<?php 
+//подключаем внешний файл с логикой подключения к базе
+require_once "dbPdo.php";
+//создаем экземпляр подключения к базе (функция описана в файле dbPdo.php)
+$pdo = dbConnect();
+//Устанавливаем кодировку для работы с базой. При выводе не обязательна, но желательно. Функция описана в файле dbPdo.php
+dbSetCharset($pdo, "utf8", "utf8_general_ci");
+//Выполняем запрос к базе данных с подготовкой параметров. Напрямую параметры передавать опасно, поэтому
+//мы обрабатываем их в методе execute(). Функция описана в файле dbPdo.php
+$result1 = dbQuery($pdo, 'SELECT * FROM `typeofbuildings` WHERE `type`=:type', array(":type" => "residential"));
+$result2 = dbQuery($pdo, 'SELECT * FROM `purchaseandsales` WHERE `type`=:type', array(":type" => "residential"));
+$result3 = dbQuery($pdo, 'SELECT * FROM `typemanagment` WHERE `type`=:type', array(":type" => "residential"));
+?>
+<ul id="list">
+  <li>
+  <b>Виды строений:</b>
+  <ul>
+	<?php
+	//Перебираем результат запроса и создаем асоциативный массив с ключами в виде названия полей.
+
+	while ($row = $result1->fetch(PDO::FETCH_ASSOC)):?>
+		<li onclick="javascript: document.getElementById('text').innerHTML = '<?php echo $row["descr"]; ?>'" ><?php echo $row["name"]; ?></li>		
+	<?php endwhile; ?>
+  </ul>     
+  </li>
+  <li>
+  <b>Механизмы приобретения и реализации:</b> 
+  <ul>
+	<?php
+	//Перебираем результат запроса и создаем асоциативный массив с ключами в виде названия полей.
+
+	while ($row = $result2->fetch(PDO::FETCH_ASSOC)):?>
+		<li onclick="javascript: document.getElementById('text').innerHTML = '<?php echo $row["descr"]; ?>'" ><?php echo $row["name"]; ?></li>		
+	<?php endwhile; ?>
+  </ul>     
+  </li>
+  <li>
+  <b>Виды управления:</b>
+  <ul>
+	<?php
+	//Перебираем результат запроса и создаем асоциативный массив с ключами в виде названия полей.
+	while ($row = $result3->fetch(PDO::FETCH_ASSOC)):?>
+		<li onclick="javascript: document.getElementById('text').innerHTML = '<?php echo $row["descr"]; ?>'" ><?php echo $row["name"]; ?></li>		
+	<?php endwhile; ?>
+  </ul>     
+  </li>
+</ul>
+</div>
+
+<div id="text">
+<br>&emsp;<b>Жилая недвижимость</b> — это жилые дома, квартиры, иные жилые помещения в жилых домах и строениях, пригодные для постоянного и временного проживания граждан, отвечающее установленным санитарным и техническим требованиям, а также для использования в установленном порядке в качестве служебных жилых помещений и общежитий.
+</div>
+<br>
+<br>
+<div style=" width:100%; height:30px; clear:both;"></div>
+
+
+</body>
+</html>
